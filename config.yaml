@@ -1,0 +1,8 @@
+
+# 配置比较简单就不分组
+# 微信服务号appId appSecret
+# 自行去申请
+# http://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=sandbox/login
+appId: ''
+appSecret: ''
+
