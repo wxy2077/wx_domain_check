@@ -11,7 +11,7 @@
 package routes
 
 import (
-"github.com/gin-gonic/gin"
+	"github.com/gin-gonic/gin"
 )
 
 // 处理跨域请求中间价,支持options访问
@@ -53,5 +53,6 @@ func Run(addr string) {
 // so this one won't be so messy
 func getRoutes() {
 	v1 := router.Group("/tools")
-	addPingRoutes(v1)
+	addCheckRoutes(v1)
+	addSpiderToolsRoutes(v1)
 }

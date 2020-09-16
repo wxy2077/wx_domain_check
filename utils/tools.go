@@ -18,7 +18,7 @@ import (
 字符串转Map
 
 **/
-func StringToMap(content string)  map[string]interface{}{
+func StringToMap(content string) map[string]interface{} {
 
 	var resMap map[string]interface{}
 	err := json.Unmarshal([]byte(content), &resMap)

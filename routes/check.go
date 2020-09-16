@@ -17,35 +17,31 @@ import (
 	"time"
 )
 
-
 var currentCache saveDate
-
 
 type saveDate struct {
 	AccessToken string
-	Expire int
+	Expire      int
 }
 
 func (c *saveDate) SetExpire(expire int) {
 	c.Expire = expire
 }
 
-
 func (c *saveDate) SetAccessToken(token string) {
 	c.AccessToken = token
 }
 
-func addPingRoutes(rg *gin.RouterGroup) {
+func addCheckRoutes(rg *gin.RouterGroup) {
 	check := rg.Group("/domain")
-
 
 	check.GET("/check", func(c *gin.Context) {
 		url := c.Query("url")
-		if url == ""{
+		if url == "" {
 			c.JSON(200, gin.H{
-				"code":   	400,
+				"code":    400,
 				"message": "requests params fail",
-				"data": nil,
+				"data":    nil,
 			})
 			return
 		}
@@ -58,12 +54,12 @@ func addPingRoutes(rg *gin.RouterGroup) {
 			fmt.Println(currentCache)
 			// 不需要更新
 			AccessToken = currentCache.AccessToken
-		}else {
+		} else {
 			// 获取accessToken
 			AccessToken = utils.GetAccessToken(config.GlobConfig.AppId, config.GlobConfig.AppSecret)
 
 			// 保存accessToken 给定过期两小时
-			currentCache.SetExpire(int(time.Now().Unix() + 2 * 60 * 60))
+			currentCache.SetExpire(int(time.Now().Unix() + 2*60*60))
 			currentCache.SetAccessToken(AccessToken)
 			fmt.Println("需要更新")
 			fmt.Println(currentCache)
@@ -74,11 +70,11 @@ func addPingRoutes(rg *gin.RouterGroup) {
 		isFreeze := utils.CheckUrl(shoutUrl)
 
 		c.JSON(200, gin.H{
-			"code":   	200,
+			"code":    200,
 			"message": "success",
 			"data": gin.H{
 				"isFreeze": isFreeze,
-				"url": url,
+				"url":      url,
 			},
 		})
 	})
