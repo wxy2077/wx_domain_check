@@ -51,6 +51,9 @@ go run main.go
 ```
 https://www.charmcode.cn/tools/domain/check?url=http://xxx.xxx.com/
 ```
+> 2020年9月29日更新
+> 某腾讯云IP最近定时白嫖我这个接口，还不点star，所以目前考虑关闭线上接口，如有需要自己搭建，或者通我个人网站预留邮箱地址联系。
+
 正常返回 code 200
 
 ```json
